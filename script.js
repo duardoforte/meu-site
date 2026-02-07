@@ -123,9 +123,15 @@ window.addEventListener('scroll', () => {
   const heroContent = document.querySelector('.hero-content');
   const codeBlock = document.querySelector('.code-block');
   
+/*    ABAIXO PARA APAGAR          */
+
+
+
+/*    ACIMA PARA APAGAR        */
+
   if (hero && scrolled < hero.offsetHeight) {
     if (heroContent) {
-      heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
+      heroContent.style.transform = `translateY(${scrolled * 0.2}px)`;
     }
     if (codeBlock) {
       codeBlock.style.transform = `translateY(${scrolled * 0.3}px)`;

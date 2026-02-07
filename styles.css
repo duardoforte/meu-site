@@ -173,6 +173,19 @@ body {
   box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
 }
 
+.btn-tres {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: block;
+  margin: 0 auto;
+}
+
+.btn-tres:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+
 .btn-secondary {
   background: transparent;
   color: #e2e8f0;
@@ -257,7 +270,7 @@ body {
 }
 
 .string {
-  color: #f59e0b;
+  color: #ffee02;
 }
 
 /* Scroll Indicator */
@@ -328,7 +341,7 @@ body {
 
 .about-text p {
   font-size: 1.1rem;
-  color: #94a3b8;
+  color: #ffffff;
   margin-bottom: 1.5rem;
   line-height: 1.8;
 }
@@ -607,11 +620,36 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
+.hamburger {
+display: flex;
+cursor: pointer;
+z-index: 1001;
+}
 
-  .nav-menu {
+
+.scroll-arrow{
+display: none;
+}
+
+.nav-menu {
+position: fixed;
+left: 0;
+width: 100%;
+top: -100vh;
+flex-direction: column;
+background-color: rgba(15, 23, 42, 0.98); /* Mesma cor base do navbar */
+text-align: center;
+transition: 0.3s ease;
+padding: 2rem 0;
+z-index: 990;
+}
+
+
+.nav-menu.active {
+top: 0px;
+}
+
+  /*.nav-menu {
     position: fixed;
     left: -100%;
     top: 70px;
@@ -624,8 +662,15 @@ body {
   }
 
   .nav-menu.active {
-    left: 0;
+    /*left: 0;
+    top:80;
   }
+*/
+
+
+
+
+
 
   .hero-container {
     grid-template-columns: 1fr;
@@ -690,6 +735,10 @@ body {
   }
 }
 
+.scroll-arrow{
+display: none;
+}
+
 /* Animations */
 @keyframes fadeInUp {
   from {
@@ -716,4 +765,64 @@ body {
 .animate-on-scroll.animated {
   opacity: 1;
   transform: translateY(0);
+}
+
+/*        APAGAR ABAIXO CASO DE RUIM      
+
+ Ajustes específicos para telas mobile (iPhone 12, S20, etc) 
+@media (max-width: 480px) {
+  
+  
+  .code-block {
+    width: 100% !important;    Força caber na largura disponível 
+    max-width: 100%;          Segurança extra 
+    box-sizing: border-box;    Garante que padding não aumente a largura 
+     Centraliza se sobrar espaço 
+      Reduz o padding interno para sobrar espaço pro texto 
+  }
+
+  /* Onde a mágica acontece: Forçar o texto a quebrar linha 
+  .code-content, 
+  .code-block pre, 
+  .code-block code {
+      /* Obriga o texto a descer para a próxima linha 
+    word-break: break-word !important; /* Quebra palavras/listas longas se necessário 
+    overflow-wrap: break-word;         /* Suporte extra para navegadores 
+    font-size: 1.1rem !important;     /* Reduz a fonte (aprox 12px) para caber melhor 
+    line-height: 1.5;                  /* Melhora a leitura com a fonte menor 
+  }
+}
+
+        APAGAR ACIMA CASO DE RUIM      */
+
+        @media (max-width: 480px) {
+
+  /* 1. Desbloqueia a altura da seção principal */
+  .hero-container, section { /* Use a classe da seção que envolve tudo */
+    height: auto !important; 
+    width: 100% !important;      /* Permite crescer além da tela */
+    min-height: 100vh;             /* Garante que o fundo cubra tudo */
+    padding-top: 70px !important; /* Empurra o conteúdo para baixo (ajuste conforme sua navbar) */
+    padding-bottom: 50px;          /* Espaço no final para não colar */
+    justify-content: flex-start !important; /* Começa do topo, não do meio */
+  }
+
+  /* 2. Seu código do Code Block (Mantido e ajustado) */
+  .code-block {
+    width: 100% !important;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-top: 2rem; /* Espaço extra entre o botão e o código */
+  }
+
+  .code-content, 
+  .code-block pre, 
+  .code-block code {
+    word-break: break-word !important;
+    overflow-wrap: break-word;
+    /* DICA: 1.1rem (aprox 17px) é muito grande para código em mobile. 
+       Tente 0.85rem ou 0.9rem para economizar altura. */
+    font-size: 1.05rem !important; 
+    line-height: 1.5;
+  }
 }
